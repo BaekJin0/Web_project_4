@@ -1,0 +1,47 @@
+{{> /layout/header}}
+
+<!-- 컨테이너 시작 -->
+<div class="content_box mt-3">
+  <div class="form_box">
+    <div class="display_box"></div>
+    <!-- 상세정보보기 시작 -->
+    <div class="info_box">
+      <div  class="info_text_box">
+        <form>
+          <input type="hidden" id="no" value="{{principal.no}}">
+          <div class="mb-3 mt-3">
+            <input type="text" class="form-control" value="아이디: {{principal.id}}" id="id" readonly>
+          </div>
+          <div class="mb-3 mt-3">
+            <input type="text" class="form-control" value="비밀번호: {{principal.password}}" id="password" readonly>
+          </div>
+          <div class="mb-3 mt-3">
+              <input type="email" class="form-control" value="이메일: {{principal.email}}" id="email" readonly>
+          </div>
+          <div class="mb-3 mt-3">
+              <input type="text" class="form-control" value="가입일: {{principal.createDate}}" id="createDate" readonly>
+          </div>
+          <div class="btn_md_box1">
+            <div class="btn btn_md1"><a href="/s/user/update-form">회원정보 수정</a>
+          </div>
+        </form>
+      </div>
+
+      <!--댓글 시작-->
+      <div class="my_comment_box">
+        {{#comments}}
+        <div onclick="location.href='/post/{{restaurant.id}}'">
+          가게이름 : {{restaurant.name}}
+          <br/>
+          내가 단 댓글 : {{content}}
+        </div>
+        <hr>
+        {{/comments}}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- 컨테이너 끝 -->
+
+{{> /layout/footer}}
