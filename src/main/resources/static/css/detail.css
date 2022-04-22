@@ -1,0 +1,114 @@
+/*상세페이지*/
+
+.content_detail_box {
+    position: relative;
+    height: 1300px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    background-color: rgb(255, 214, 137);
+}
+
+.detail_box {
+    height: auto;
+    width: 90%;
+    position: relative;
+    display: block;
+}
+
+.data_box {
+    height: auto;
+    width: 90%;
+    position: relative;
+    padding: 20px;
+    top: 5%;
+    left: 5%;
+    display: flex;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: white;
+    border-bottom: solid 1px black;
+}
+
+.img_box {
+    display: block;
+    width: 40%;
+    margin: 0 15px 0 0;
+}
+
+.detail_thumnail_img_size {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+
+.photo_box {
+    height: 50%;
+    width: 100%;
+    border: 1px solid black; 
+    display: flex;
+    position: relative;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.map_box {
+    height: 270px;
+    width: 100%;
+    border: 1px solid black; 
+    display: flex;
+    position: relative;
+    border-radius: 10px;
+}
+
+.info_detail_box {
+    height: 100%;
+    padding: 0px 10px;
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid black; 
+}
+
+/*가게 정보*/ /*리틀보라카이-메뉴 스크롤, 산도롱맨도롱-시간 스크롤, 어반정글-bizhour null*/
+.res_name {
+    height: 50px;
+    align-items: center;
+    border-bottom: solid rgb(187, 187, 187) 1px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.res_addr {
+    height: 50px;
+    align-items: center;
+    overflow: auto; 
+    border-bottom: solid rgb(187, 187, 187) 1px;
+}
+.res_tel {
+    height: 50px;
+    align-items: center;
+    border-bottom: solid rgb(187, 187, 187) 1px;
+}
+.res_hour {
+    height: 50px;
+    align-items: center;
+    overflow: auto;
+    border-bottom: solid rgb(187, 187, 187) 1px;
+    scrollbar-width: thin;
+    overflow: auto;
+}
+.res_link {
+    height: 50px;
+    align-items: center;
+    overflow: auto; 
+    border-bottom: solid rgb(187, 187, 187) 1px;
+}
+.res_menu {
+    height: 315px;
+    padding-top: 5px;
+    padding-right: 5px;
+    font-size: 1em; 
+    scrollbar-width: thin;
+    overflow: auto; 
+}
+
