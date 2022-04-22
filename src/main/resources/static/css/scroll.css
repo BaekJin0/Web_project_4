@@ -1,0 +1,58 @@
+/*상세페이지 스크롤*/
+
+/*주소 스크롤*/
+.res_addr::-webkit-scrollbar {
+    width: 10px;
+}
+
+.res_addr::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 10px;
+}
+
+.res_addr::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+/*영업시간 스크롤*/
+.res_hour::-webkit-scrollbar {
+    width: 10px;
+}
+
+.res_hour::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 10px;
+}
+
+.res_hour::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+/*링크 스크롤*/
+.res_link::-webkit-scrollbar {
+    width: 10px;
+}
+
+.res_link::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 10px;
+}
+
+.res_link::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+/*메뉴 스크롤*/
+.res_menu::-webkit-scrollbar {
+    width: 10px;
+}
+
+.res_menu::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 10px;
+    border-bottom-right-radius: 10px; 
+}
+
+.res_menu::-webkit-scrollbar-track {
+    background-color: white;
+}
