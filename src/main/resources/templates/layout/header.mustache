@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>혼저 왕 먹읍서</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=end7t73ofb"></script>
+        
+        <!-- bootstrap add -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- jquery add -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- css add -->
+        <link rel="stylesheet" href="/css/styles.css">
+ 
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-white navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+                {{#principal}}
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href=""></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/s/user/{{no}}">마이페이지</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="btn-logout" class="nav-link" href="/logout">로그아웃</a>
+                    </li>
+                </ul>
+                {{/principal}}
+                {{^principal}}
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login-form">로그인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/join-form">회원가입</a>
+                    </li>
+                </ul>
+                {{/principal}}
+            </div>
+        </div>
+    </nav>
+    <div class= "title">
+        <a class="navbar-brand" href="/">
+    <div style="font-family: mTitleFont !important;">혼저 왕 먹읍서 🍊</div>
+    </a>
+    </div>
