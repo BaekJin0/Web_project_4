@@ -1,0 +1,115 @@
+/*버튼*/
+
+/*버튼+박스1*/
+.btn_sm_box {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    margin: 15px 0px;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.btn_sm {
+    height: 100%;
+    width: 30%;
+    color: white;
+    background-color:#F7630C;
+    border-radius: 6px;
+    border-color: white;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.btn_sm a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.btn_sm_box1 {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    height: 10%;
+    margin-left: 20%;
+}
+
+.btn_sm1 {
+    height: 30px;
+    width: 30%;
+    color: white;
+    background-color:#F7630C;
+    border-radius: 6px;
+    border-color: white;
+    text-align: center;
+}
+
+.btn_sm1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/*버튼+박스2*/
+.btn_md_box {
+    width: 65%;
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    justify-content: space-between;
+}
+
+.btn_md {
+    padding: 5px;
+    height: 30px;
+    width: 100%;
+    color: white;
+    background-color:#F7630C;
+    border-radius: 6px;
+    text-align: center;
+}
+.btn_md a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/*버튼+박스3*/
+.btn_lg_box {
+    width: 100%;
+}
+
+.btn_lg {
+    text-align: center;
+    color: white;
+    background-color:#F7630C;
+    border-radius: 6px;
+    text-align: center;
+    height: 10%;
+    width: 100%;
+}
+.btn_lg a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/*마이페이지 버튼*/
+.btn_md_box1 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 10%;
+}
+
+.btn_md1 {
+    padding: 5px;
+    height: 30px;
+    width: 100%;
+    color: white;
+    background-color:#F7630C;
+    border-radius: 6px;
+    text-align: center;
+}
+.btn_md1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
