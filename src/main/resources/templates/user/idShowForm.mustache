@@ -1,0 +1,25 @@
+{{> /layout/header}}
+
+<!-- 컨테이너 시작 -->
+<div class="content_box mt-3">
+  <div class="form_box">
+    <div class="fyi_box1">고객님의 정보와 일치하는 아이디입니다.</div>
+    <!-- 아이디 확인 시작 -->
+    <div class="form_box2">
+      <div class="form_text_box1">
+        <form action="/user/id-show" method="post">
+          <br>
+          <div class="id_show_box"> {{id}} </div>
+        </form>
+        <div class="btn_sm_box">
+          <div class="btn_sm"><a href="/login-form">로그인</a></div>
+          <div class="btn_sm"><a href="/user/password-reset-form">비밀번호 찾기</a></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- 컨테이너 끝 -->
+
+{{> /layout/footer}}
