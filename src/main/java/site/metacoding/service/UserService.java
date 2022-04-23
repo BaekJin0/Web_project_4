@@ -105,4 +105,22 @@ public class UserService {
         }
     }
 
+    @Transactional
+    public User 회원수정(Integer no, User user) {
+        // UPDATE user SET password = ?, email = ?, WHERE id = ?
+        Optional<User> userOp = userRepository.findById(no); // 영속화 (DB의 row를 영속성 컨텍스트에 옮김)
+
+        if (userOp.isPresent()) {
+            // 영속화된 오브젝트 수정
+            User userEntity = userOp.get();
+
+            userEntity.setPassword(user.getPassword());
+            userEntity.setEmail(user.getEmail());
+
+            return userEntity;
+        } else {
+            throw new RuntimeException("회원수정에 실패하였습니다.");
+        }
+
+    } // 트랜잭션이 걸려있으면 @Service가 종료될 때 변경 감지 후 DB에 UPDATE -> 더티체킹
 }

@@ -189,4 +189,42 @@ public class UserController {
 
     }
 
+    // 유저수정 페이지 (동적) - 로그인O
+    @GetMapping("/s/user/update-form")
+    public String updateForm() {
+        // 세션값을 출력했는데, 원래는 디비에서 가져와야 함.
+        return "user/updateForm";
+    }
+
+    // username(X), password(O), email(O)
+    // password=1234&email=ssar@nate.com (x-www-form-urlencoded)
+    // { "password" : "1234", "email" : "ssar@nate.com" } (application/json)
+    // json을 받을 것이기 때문에 Spring이 데이터 받을 때 파싱전략을 변경!!
+    // Put요청은 Http Body가 있다. Http Header의 Content-Type에 MIME타입을 알려줘야 한다.
+
+    // @RequestBody -> BufferedReader + JSON 파싱(자바 오브젝트)
+    // @ResponseBody -> BufferedWriter + JSON 파싱(자바 오브젝트)
+
+    // 유저수정 - 로그인O
+    @PutMapping("/s/user/{no}")
+    public @ResponseBody ResponseDto<String> update(@PathVariable Integer no, @RequestBody User user) {
+
+        User principal = (User) session.getAttribute("principal");
+
+        // 1. 인증 체크
+        if (principal == null) {
+            return new ResponseDto<String>(-1, "인증안됨", null);
+        }
+
+        // 2. 권한체크
+        if (principal.getNo() != no) {
+            return new ResponseDto<String>(-1, "권한없어", null);
+        }
+
+        User userEntity = userService.회원수정(no, user);
+        session.setAttribute("principal", userEntity);// 세션변경 - 덮어쓰기
+
+        return new ResponseDto<String>(1, "성공", null);
+    }
+
 }
