@@ -1,0 +1,35 @@
+/*리스트페이지*/
+
+table, td {
+    table-layout: auto;
+    white-space: normal;
+}
+
+td:hover {
+    cursor: pointer;
+}
+
+.thumnail_img {
+    position: relative;
+    display: block;
+    object-fit: scale-down;
+    margin: auto;
+    overflow: hidden;
+}
+
+.thumnail_img_size {
+    width: 150px;
+    height: 150px;
+}
+
+/*리스트페이지 검색*/
+.search_box {
+    padding-left: 10px;
+    border-radius: 10px;
+    border: solid 1px;
+}
+
+.btn_search {
+    background-color: #13A10E;
+    border-radius: 10px;
+}
