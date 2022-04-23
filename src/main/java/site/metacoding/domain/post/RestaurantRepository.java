@@ -1,5 +1,7 @@
 package site.metacoding.domain.post;
 
-public class RestaurantRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RestaurantRepository extends JpaRepository<Restaurant, Integer> {
 
 }
