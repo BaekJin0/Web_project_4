@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.domain.comment.Comment;
 import site.metacoding.domain.handler.CustomException;
+import site.metacoding.domain.post.Restaurant;
 import site.metacoding.domain.user.User;
+import site.metacoding.service.PostService;
 import site.metacoding.service.UserService;
 import site.metacoding.util.UtilValid;
 import site.metacoding.web.dto.ResponseDto;
@@ -35,6 +38,7 @@ import site.metacoding.web.dto.user.PasswordResetReqDto;
 @Controller
 public class UserController {
 
+    private final PostService postService;
     private final UserService userService;
     private final HttpSession session;
 
@@ -92,6 +96,7 @@ public class UserController {
     // 웹브라우저 -> 회원가입 페이지 주세요!! (O)
     // 앱 -> 회원가입 페이지 주세요? (X)
     // 회원가입폼 (인증 X)
+
     @GetMapping("/join-form")
     public String joinForm() {
         return "user/joinForm";
@@ -101,7 +106,7 @@ public class UserController {
     public String join(@Valid JoinReqDto joinReqDto, BindingResult bindingResult) {
 
         UtilValid.요청에러처리(bindingResult);
-
+        // System.out.println("나와라 얍 : " + joinReqDto.toString());
         userService.회원가입(joinReqDto.toEntity());
 
         // redirect:매핑주소
@@ -111,13 +116,14 @@ public class UserController {
     // 로그인폼 (인증 X)
     @GetMapping("/login-form")
     public String loginForm(HttpServletRequest request, Model model) {
+
         // jSessionId=fjsdklfjsadkfjsdlkj333333;remember=ssar
         // request.getHeader("Cookie");
         if (request.getCookies() != null) {
             Cookie[] cookies = request.getCookies(); // jSessionId, remember 두개가 있음.
 
             for (Cookie cookie : cookies) {
-                System.out.println("쿠키값 : " + cookie.getName());
+                // System.out.println("쿠키값 : " + cookie.getName());
                 if (cookie.getName().equals("remember")) {
                     model.addAttribute("remember", cookie.getValue());
                 }
@@ -129,8 +135,9 @@ public class UserController {
     }
 
     @PostMapping("/login")
+
     public String login(@Valid LoginReqDto loginReqDto, BindingResult bindingResult, HttpServletResponse response) {
-        System.out.println("사용자로 부터 받은 username, password : " + loginReqDto);
+        // System.out.println("사용자로 부터 받은 username, password : " + loginReqDto);
 
         UtilValid.요청에러처리(bindingResult);
 
@@ -159,6 +166,7 @@ public class UserController {
     @GetMapping("/logout")
     public String logout() {
         session.invalidate();
+
         return "redirect:/login-form"; // PostController 만들고 수정하자.
     }
 
@@ -232,6 +240,19 @@ public class UserController {
         session.setAttribute("principal", userEntity);// 세션변경 - 덮어쓰기
 
         return new ResponseDto<String>(1, "성공", null);
+    }
+
+    @DeleteMapping("/s/user/{no}")
+    public @ResponseBody ResponseDto<String> userDelete(@PathVariable Integer no) {
+        User principal = (User) session.getAttribute("principal");
+        if (principal != null) {
+            userService.회원탈퇴(no);
+            session.invalidate();
+
+            return new ResponseDto<String>(1, "성공", null);
+        } else {
+            return new ResponseDto<String>(-1, "실패", null);
+        }
     }
 
 }
