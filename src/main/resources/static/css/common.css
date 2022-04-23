@@ -1,0 +1,32 @@
+
+ @font-face {
+    font-family: mAllFont;
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff'); }
+
+    @font-face {
+        font-family: mTitleFont;
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/WandohopeB.woff') format('woff');
+     }
+
+* {
+    font-family: mAllFont;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.content_box {
+    position: relative;
+    height: 1000px !important;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    background-color: rgb(255, 214, 137);
+}
+
+textarea {
+    width: 100% !important;
+    height: 6.25em;
+    border: none;
+    resize: none;
+}
