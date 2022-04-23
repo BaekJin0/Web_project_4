@@ -48,6 +48,45 @@ public class UserController {
         return new ResponseDto<String>(1, "통신성공", data);
     }
 
+    @GetMapping("/user/id-find-form")
+    public String idFindForm() {
+        return "/user/idFindForm";
+    }
+
+    @PostMapping("/user/id-find")
+    public String idFind(@Valid IdFindReqDto idFindReqDto, BindingResult bindingResult) {
+
+        UtilValid.요청에러처리(bindingResult);
+
+        userService.아이디찾기(idFindReqDto);
+
+        return "/user/id-show-form";
+    }
+
+    @PostMapping("/user/id-show-form")
+    public String idShowForm(@Valid IdFindReqDto idFindReqDto, BindingResult bindingResult, Model model) {
+        UtilValid.요청에러처리(bindingResult);
+
+        model.addAttribute("id", userService.아이디찾기(idFindReqDto));
+
+        return "/user/idShowForm";
+    }
+
+    @GetMapping("/user/password-reset-form")
+    public String passwordResetForm() {
+        return "/user/passwordResetForm";
+    }
+
+    @PostMapping("/user/password-reset")
+    public String passwordReset(@Valid PasswordResetReqDto passwordResetReqDto, BindingResult bindingResult) {
+
+        UtilValid.요청에러처리(bindingResult);
+
+        userService.패스워드초기화(passwordResetReqDto);
+
+        return "redirect:/login-form";
+    }
+
     // 웹브라우저 -> 회원가입 페이지 주세요!! (O)
     // 앱 -> 회원가입 페이지 주세요? (X)
     // 회원가입폼 (인증 X)
@@ -119,6 +158,35 @@ public class UserController {
     public String logout() {
         session.invalidate();
         return "redirect:/login-form"; // PostController 만들고 수정하자.
+    }
+
+    // 앱은 이 메서드 요청 안함, 웹만 함
+    // SSR할지 CSR할지 선택 -> 이거는 SSR!
+    @GetMapping("/s/user/{no}")
+    public String detail(/* Model model, */@PathVariable Integer no, Model model) {
+        // DB에서 셀렉트해서 모델에 담으면 끝
+        // User userEntity = userService.회원정보(id);
+        // model.addAttribute("user", userEntity);
+        User principal = (User) session.getAttribute("principal");
+
+        // 1. 인증 체크
+        if (principal == null) {
+            return "error/page1";
+        }
+
+        // 2. 권한체크
+        if (principal.getNo() != no) {
+            return "error/page1";// http 상태코드 403을 함께 리턴!!
+        }
+
+        User userEntity = userService.회원정보(no);
+        if (userEntity == null) {
+            return "error/page1";
+        } else {
+            model.addAttribute("user", userEntity);
+            return "user/detail";
+        }
+
     }
 
 }
