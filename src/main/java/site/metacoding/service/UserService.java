@@ -1,11 +1,14 @@
 package site.metacoding.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
+import site.metacoding.domain.comment.Comment;
+import site.metacoding.domain.comment.CommentRepository;
 import site.metacoding.domain.handler.CustomException;
 import site.metacoding.domain.user.User;
 import site.metacoding.domain.user.UserRepository;
@@ -19,6 +22,7 @@ import site.metacoding.web.dto.user.PasswordResetReqDto;
 @Service // 컴포넌트 스캔시에 IoC 컨테이너에 등록
 public class UserService {
 
+    private final CommentRepository commentRepository;
     private final UserRepository userRepository;
     private final EmailUtil emailUtil;
 
@@ -31,7 +35,7 @@ public class UserService {
 
         if (userOp.isPresent()) {
             User userEntity = userOp.get(); // 영속화
-            System.out.println("=====================" + userEntity.getId());
+            // System.out.println("=====================" + userEntity.getId());
             return userEntity.getId();
         } else {
             throw new CustomException("해당 이름이나 이메일이 존재하지 않습니다.");
@@ -123,4 +127,18 @@ public class UserService {
         }
 
     } // 트랜잭션이 걸려있으면 @Service가 종료될 때 변경 감지 후 DB에 UPDATE -> 더티체킹
+
+    @Transactional
+    public void 회원탈퇴(Integer no) {
+        userRepository.deleteById(no);
+
+    }
+
+    public List<Comment> 댓글내역(User userEntity) {
+
+        List<Comment> commentEntity = commentRepository.findByUserComments(userEntity.getNo());
+
+        return commentEntity;
+    }
+
 }

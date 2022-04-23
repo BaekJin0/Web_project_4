@@ -1,5 +1,6 @@
 package site.metacoding.web;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.Cookie;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
+import site.metacoding.domain.comment.Comment;
 import site.metacoding.domain.handler.CustomException;
 import site.metacoding.domain.user.User;
 import site.metacoding.service.UserService;
@@ -170,6 +172,7 @@ public class UserController {
         User principal = (User) session.getAttribute("principal");
 
         // 1. 인증 체크
+
         if (principal == null) {
             return "error/page1";
         }
@@ -182,9 +185,13 @@ public class UserController {
         User userEntity = userService.회원정보(no);
         if (userEntity == null) {
             return "error/page1";
+
         } else {
+            List<Comment> comments = userService.댓글내역(userEntity);
+            model.addAttribute("comments", comments);
             model.addAttribute("user", userEntity);
-            return "user/detail";
+
+            return "user/userInfo";
         }
 
     }

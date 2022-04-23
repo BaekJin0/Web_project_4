@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -31,10 +33,12 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @JsonIgnoreProperties({ "restaurant" })
     @JoinColumn(name = "postId")
     @ManyToOne
-    private Restaurant resturant;
+    private Restaurant restaurant;
 
+    @JsonIgnoreProperties({ "userNo" })
     @JoinColumn(name = "userNo")
     @ManyToOne
     private User user;
