@@ -1,0 +1,181 @@
+/*유저 폼*/
+
+.form_box {
+    width: 80%;
+    height: auto;
+    margin: 20px 0px;
+    border-radius: 10px;
+    background-color: white;
+    display: block;
+}
+
+.form_box2 {
+    width: 100%;
+    height: auto;
+    margin: 20px 0px;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+/*join: d1 f1*/
+/*login: d2 f2*/
+/*update: d2 f1*/
+/*idFind fyi f3*/
+/*idShow fyi f5*/
+/*passwordReset fyi f3*/
+
+.display_box1 {
+    margin-top: 3%;
+    width: 100%;
+    height: 35%;
+    background-color: rgb(255, 255, 255);
+    background-repeat: no-repeat;
+    background-size: 45%;
+    background-position: 50%;
+    background-image: url("../img/display1.png");
+}
+
+.form_text_box1 {
+    width: 500px;
+    height: 60%;
+    position: relative;
+    display: block;
+    justify-content: center;
+    border: 1px solid white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+.display_box2 {
+    margin-top: 5%;
+    width: 100%;
+    height: 35%;
+    background-color: rgb(255, 255, 255);
+    background-repeat: no-repeat;
+    background-size: 45%;
+    background-position: 50%;
+    background-image: url("../img/display1.png");
+}
+
+.form_text_box2 {
+    width: 100%;
+    height: 60%;
+    padding-top: 2%;
+    padding-left: 25%;
+    position: relative;
+    justify-content: center;
+    border: 1px solid white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+.display_box3 {
+    margin-top: 5%;
+    width: 100%;
+    height: 35%;
+    background-color: rgb(255, 255, 255);
+    background-repeat: no-repeat;
+    background-size: 45%;
+    background-position: 50%;
+    background-image: url("../img/display1.png");
+}
+
+.form_text_box3 {
+    width: 100%;
+    height: 60%;
+    padding-top: 2%;
+    padding-left: 25%;
+    position: relative;
+    justify-content: center;
+    border: 1px solid white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.form_text_box4 {
+    width: 60%;
+    height: 60%;
+    margin-left: 20%;
+    padding-top: 2%;
+    padding-left: 10%;
+    position: relative;
+    justify-content: center;
+    border: 1px solid white;
+    display: flex;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.fyi_box1{
+    margin-top: 10%;
+    height:20px;
+    color: gray;
+    font-size: small;
+    display: flex;
+    justify-content: center;
+}
+
+.fyi_box2{
+    height:20px;
+    color: gray;
+    font-size: small;
+    display: flex;
+    justify-content: center;
+}
+
+/*아이디 확인*/
+.form_text_box5 {
+    width: 60%;
+    height: 20%;
+    margin-left: 20%;
+    padding-top: 3%;
+    position: relative;
+    justify-content: center;
+    border: 1px solid white;
+    display: flex;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.id_show_box{
+    border: 1px solid black;
+    font-size: 20px;
+    display: block;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+}
+
+/*마이페이지*/
+.display_box {
+    width: 100%;
+    height: 300px;
+    background-color: rgb(255, 255, 255);
+    background-repeat: no-repeat;
+    background-size: 500px;
+    background-position: 50%;
+    border-radius: 10px;
+    background-image: url("../img/display1.png");
+}
+
+.info_box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.info_text_box {
+    width: 500px;
+    height: 100%;
+    display: block;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
