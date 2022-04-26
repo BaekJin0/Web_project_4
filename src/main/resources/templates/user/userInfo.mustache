@@ -30,7 +30,7 @@
       <!--댓글 시작-->
       <div class="my_comment_box">
         {{#comments}}
-        <div onclick="location.href='/post/{{restaurant.id}}'">
+        <div class="my_comment_post" onclick="location.href='/post/{{restaurant.id}}'">
           가게이름 : {{restaurant.name}}
           <br/>
           내가 단 댓글 : {{content}}
