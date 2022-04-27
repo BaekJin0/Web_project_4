@@ -23,8 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.domain.comment.Comment;
 import site.metacoding.domain.handler.CustomException;
-import site.metacoding.domain.post.Restaurant;
+import site.metacoding.domain.love.Love;
 import site.metacoding.domain.user.User;
+import site.metacoding.service.LoveService;
 import site.metacoding.service.PostService;
 import site.metacoding.service.UserService;
 import site.metacoding.util.UtilValid;
@@ -38,7 +39,6 @@ import site.metacoding.web.dto.user.PasswordResetReqDto;
 @Controller
 public class UserController {
 
-    private final PostService postService;
     private final UserService userService;
     private final HttpSession session;
 
@@ -196,6 +196,8 @@ public class UserController {
 
         } else {
             List<Comment> comments = userService.댓글내역(userEntity);
+            List<Love> loves = userService.담기목록보기(userEntity);
+            model.addAttribute("loves", loves);
             model.addAttribute("comments", comments);
             model.addAttribute("user", userEntity);
 

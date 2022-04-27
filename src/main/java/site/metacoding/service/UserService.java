@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import site.metacoding.domain.comment.Comment;
 import site.metacoding.domain.comment.CommentRepository;
 import site.metacoding.domain.handler.CustomException;
+import site.metacoding.domain.love.Love;
+import site.metacoding.domain.love.LoveRespository;
 import site.metacoding.domain.user.User;
 import site.metacoding.domain.user.UserRepository;
 import site.metacoding.util.email.EmailUtil;
@@ -22,6 +24,7 @@ import site.metacoding.web.dto.user.PasswordResetReqDto;
 @Service // 컴포넌트 스캔시에 IoC 컨테이너에 등록
 public class UserService {
 
+    private final LoveRespository loveRespository;
     private final CommentRepository commentRepository;
     private final UserRepository userRepository;
     private final EmailUtil emailUtil;
@@ -139,6 +142,13 @@ public class UserService {
         List<Comment> commentEntity = commentRepository.findByUserComments(userEntity.getNo());
 
         return commentEntity;
+    }
+
+    public List<Love> 담기목록보기(User userEntity) {
+
+        List<Love> lovesEntity = loveRespository.findByUserId(userEntity.getNo());
+
+        return lovesEntity;
     }
 
 }

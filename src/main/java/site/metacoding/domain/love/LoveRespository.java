@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface LoveRespository extends JpaRepository<Love, Integer> {
 
-    @Query(value = "SELECT * FROM love WHERE userId = :userId ORDER BY id DESC", nativeQuery = true)
-    List<Love> findByUserId(@Param("userId") Integer userId);
+    @Query(value = "SELECT * FROM love WHERE userNo = :userNo ORDER BY id DESC", nativeQuery = true)
+    List<Love> findByUserId(@Param("userNo") Integer userNo);
 }

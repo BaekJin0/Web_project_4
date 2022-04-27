@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,19 +25,19 @@ public class LoveController {
     private final HttpSession session;
 
     @PostMapping("/s/post/{postId}/love")
-    public String love(@PathVariable Integer postId, LoveReqDto loveReqDto) {
+    public ResponseEntity<?> love(@PathVariable Integer postId, LoveReqDto loveReqDto) {
 
         User principal = (User) session.getAttribute("principal");
 
         loveService.담기(loveReqDto, postId, principal);
-        return "redirect:/post/" + postId;
+        return new ResponseEntity<>(1, HttpStatus.OK);
     }
 
-    @GetMapping("/s/user/{id}/love")
-    public String myLoveList(@PathVariable Integer id, Model model) {
-        List<Love> loves = loveService.담기목록보기(id);
-        model.addAttribute("loves", loves);
+    // @GetMapping("/s/user/{id}/love")
+    // public String myLoveList(@PathVariable Integer id, Model model) {
+    // List<Love> loves = loveService.담기목록보기(id);
+    // model.addAttribute("loves", loves);
 
-        return "/user/userInfo";
-    }
+    // return "/user/userInfo";
+    // }
 }

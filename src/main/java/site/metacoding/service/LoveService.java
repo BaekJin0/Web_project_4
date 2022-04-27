@@ -34,10 +34,4 @@ public class LoveService {
         }
     }
 
-    public List<Love> 담기목록보기(Integer userId) {
-
-        List<Love> lovesEntity = loveRespository.findByUserId(userId);
-
-        return lovesEntity;
-    }
 }

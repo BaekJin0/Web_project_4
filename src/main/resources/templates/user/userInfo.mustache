@@ -44,9 +44,12 @@
         <!--내가 담은 포스트 목록 시작-->
         <div class="my_comment_box">
           <div >
-            {{#scraps}}
-            
-            {{/scraps}}
+            {{#loves}}
+            <div class="my_comment_post" onclick="location.href='/post/{{restaurant.id}}'">
+              내가 담은 가게 : {{restaurant.name}}
+              <hr>
+            </div>
+            {{/loves}}
           </div>
         </div>
       </div>

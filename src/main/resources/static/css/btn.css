@@ -50,6 +50,23 @@
     text-decoration: none;
 }
 
+.btn_sm4 {
+    /* height: 100%;
+    width: 30%; */
+    color: white;
+    background-color:#F7630C;
+    border-radius: 6px;
+    border-color: white;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.btn_sm4 a {
+    color: inherit;
+    text-decoration: none;
+}
+
 /*버튼+박스2*/
 .btn_md_box {
     width: 65%;

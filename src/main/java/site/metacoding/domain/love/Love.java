@@ -27,7 +27,7 @@ import site.metacoding.domain.user.User;
 @EntityListeners(AuditingEntityListener.class)
 @Entity
 @Table(uniqueConstraints = {
-        @UniqueConstraint(name = "love_uk", columnNames = { "postId", "userId" })
+        @UniqueConstraint(name = "love_uk", columnNames = { "postId", "userNo" })
 })
 public class Love {
 
@@ -39,7 +39,7 @@ public class Love {
     @ManyToOne
     private Restaurant restaurant;
 
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "userNo")
     @ManyToOne
     private User user;
 

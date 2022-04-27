@@ -20,8 +20,6 @@
             </div>
             <!-- info start -->
             <div class="info_box">
-                <input id="postId" type="hidden" value="{{postId.id}}">
-                <input id="userId" type="hidden" value="{{loves.user.no}}">
                 <div class="info_detail_box">
                     <div class="res_name d-flex">
                         <div class="ml-2 justify-content-center">
@@ -67,9 +65,13 @@
         <!-- comment start -->
         <div class="data_box_2">
             <div class="comment_box">
-                <div id="btn-love" class="btn btn_sm d-inline">
+                {{#principal}}
+                <input id="postId" type="hidden" value="{{postId.id}}">
+                <input id="userId" type="hidden" value="{{no}}">
+                <button id="btn-love" class="btn btn_sm4 d-inline">
                     담기
-                </div>
+                </button>
+                {{/principal}}
                 <!-- cbox write start -->
 
                 <div class="cbox_write_area">
@@ -178,12 +180,12 @@
                 "Content-Type": "application/json; charset=utf-8"
             }
         });
-
+        
         let responseParse = await response.json();
-
-        if (response.status == 200) {
+        console.log(responseParse);
+        if (responseParse==1) {
             alert("담기 완료");
-            scrapUp(postId);
+            location.reload(); // 페이지 새로고침 ajax + ssr
         } else {
             alert("이미 담은 게시글입니다");
         }
