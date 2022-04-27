@@ -20,6 +20,8 @@
             </div>
             <!-- info start -->
             <div class="info_box">
+                <input id="postId" type="hidden" value="{{postId.id}}">
+                <input id="userId" type="hidden" value="{{loves.user.no}}">
                 <div class="info_detail_box">
                     <div class="res_name d-flex">
                         <div class="ml-2 justify-content-center">
@@ -48,7 +50,8 @@
                     <div class="res_link d-flex">
                         <div class="ml-2 justify-content-center">
                             🏠
-                            {{#restaurant.homePage}}{{restaurant.homePage}}{{/restaurant.homePage}}{{^restaurant.homePage}}정보 없음{{/restaurant.homePage}}
+                            {{#restaurant.homePage}}{{restaurant.homePage}}{{/restaurant.homePage}}{{^restaurant.homePage}}정보
+                            없음{{/restaurant.homePage}}
                         </div>
                     </div>
                     <div class="res_menu d-flex">
@@ -64,6 +67,9 @@
         <!-- comment start -->
         <div class="data_box_2">
             <div class="comment_box">
+                <div id="btn-love" class="btn btn_sm d-inline">
+                    담기
+                </div>
                 <!-- cbox write start -->
 
                 <div class="cbox_write_area">
@@ -75,7 +81,8 @@
                             <button type="submit" class="btn btn_sm3">등록</button>
                             {{/principal}}
                             {{^principal}}
-                            <a class="form-control mr-3" style="text-decoration: none;" href="/login-form" title="로그인 페이지로 이동" readonly>
+                            <a class="form-control mr-3" style="text-decoration: none;" href="/login-form"
+                                title="로그인 페이지로 이동" readonly>
                                 로그인이 필요한 서비스입니다.
                             </a>
                             <button type="submit" class="btn btn_sm3" title="로그인이 필요한 서비스입니다." disabled>등록</button>
@@ -88,7 +95,7 @@
                         <ul id="reply-box" class="list-group">
                             {{#comments}}
                             <li class="list-group-item">
-                                <div  class="d-flex justify-content-between">
+                                <div class="d-flex justify-content-between">
                                     <div>
                                         <div class="font-italic">
                                             <dt>{{comment.user.id}} &nbsp;</dt>
@@ -143,6 +150,42 @@
             location.reload(); // 페이지 새로고침 ajax + ssr
         } else {
             alert("삭제에 실패하였습니다.");
+        }
+    }
+
+    // 담기 이벤트
+    $("#btn-love").click(() => {
+        let result = confirm("이 글을 담으시겠습니까?");
+        if (result) {
+            love();
+        }
+    });
+
+    // 담기
+    async function love() {
+
+        let loveDto = {
+            postId: $("#postId").val(),
+            userId: $("#userId").val()
+        };
+
+        let postId = $("#postId").val();
+
+        let response = await fetch(`/s/post/${postId}/love`, {
+            method: "POST",
+            body: JSON.stringify(loveDto),
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+            }
+        });
+
+        let responseParse = await response.json();
+
+        if (response.status == 200) {
+            alert("담기 완료");
+            scrapUp(postId);
+        } else {
+            alert("이미 담은 게시글입니다");
         }
     }
 </script>

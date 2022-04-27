@@ -6,7 +6,7 @@
     <div class="display_box"></div>
     <!-- 상세정보보기 시작 -->
     <div class="info_box">
-      <div  class="info_text_box">
+      <div class="info_text_box">
         <form>
           <input type="hidden" id="no" value="{{principal.no}}">
           <div class="mb-3 mt-3">
@@ -16,28 +16,41 @@
             <input type="text" class="form-control" value="비밀번호: {{principal.password}}" id="password" readonly>
           </div>
           <div class="mb-3 mt-3">
-              <input type="email" class="form-control" value="이메일: {{principal.email}}" id="email" readonly>
+            <input type="email" class="form-control" value="이메일: {{principal.email}}" id="email" readonly>
           </div>
           <div class="mb-3 mt-3">
-              <input type="text" class="form-control" value="가입일: {{principal.createDate}}" id="createDate" readonly>
+            <input type="text" class="form-control" value="가입일: {{principal.createDate}}" id="createDate" readonly>
           </div>
           <div class="btn_md_box1">
             <div class="btn btn_md1"><a href="/s/user/update-form">회원정보 수정</a>
-          </div>
+            </div>
         </form>
       </div>
 
-      <!--댓글 시작-->
-      <div class="my_comment_box">
-        {{#comments}}
-        <div class="my_comment_post" onclick="location.href='/post/{{restaurant.id}}'">
-          가게이름 : {{restaurant.name}}
-          <br/>
-          내가 단 댓글 : {{content}}
+      <!--내가 단 댓글 목록 시작-->
+      <div class="d-flex">
+        <div class="my_comment_box">
+          <div>
+            {{#comments}}
+            <div class="my_comment_post" onclick="location.href='/post/{{restaurant.id}}'">
+              가게이름 : {{restaurant.name}}
+              <br />
+              내가 단 댓글 : {{content}}
+            </div>
+            <hr>
+            {{/comments}}
+          </div>
         </div>
-        <hr>
-        {{/comments}}
+        <!--내가 담은 포스트 목록 시작-->
+        <div class="my_comment_box">
+          <div >
+            {{#scraps}}
+            
+            {{/scraps}}
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </div>

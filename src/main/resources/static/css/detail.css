@@ -30,6 +30,10 @@
     border-bottom: solid 1px black;
 }
 
+.love_box {
+    display: block;
+}
+
 .img_box {
     display: block;
     width: 40%;
